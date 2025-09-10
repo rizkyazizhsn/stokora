@@ -1,7 +1,7 @@
-import OrderStatus from "@/app/_components/order-status";
-import LowStockItems from "@/app/_components/low-stock-items";
-import DashboardSummary from "@/app/_components/dashboard-summary";
-import TopSellingProduct from "@/app/_components/top-selling-product";
+import OrderStatusCard from "@/app/_components/order-status";
+import LowStockItemsCard from "@/app/_components/low-stock-items";
+import DashboardSummaryCard from "@/app/_components/dashboard-summary";
+import TopSellingProductCard from "@/app/_components/top-selling-product";
 
 export default function Home() {
   return (
@@ -9,14 +9,14 @@ export default function Home() {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-y-4 lg:gap-x-4">
           <div className="md:col-span-3 flex flex-col space-y-4">
-            <DashboardSummary />
+            <DashboardSummaryCard />
           </div>
           <div className="md:mr-4 xl:mr-0 h-full">
-            <LowStockItems />
+            <LowStockItemsCard />
           </div>
-          <div className="space-y-4">
-            <OrderStatus />
-            <TopSellingProduct />
+          <div className="space-y-4 flex flex-col h-full">
+            <OrderStatusCard />
+            <TopSellingProductCard />
           </div>
         </div>
       </div>

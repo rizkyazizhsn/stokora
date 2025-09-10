@@ -7,8 +7,9 @@ import { useEffect, useState } from "react";
 import { Orders } from "@/types/order";
 import { getOrders } from "@/app/actions";
 import { INITIAL_ORDERS } from "@/constants/summary-constant";
+import LoadingCard from "./loading-card";
 
-const DashboardSummary = () => {
+const DashboardSummaryCard = () => {
   const [orders, setOrders] = useState<Orders>(INITIAL_ORDERS);
   const [loading, setLoading] = useState<boolean>(true);
   const [dateRange, setDateRange] = useState<{ from: string; to: string }>({
@@ -30,22 +31,27 @@ const DashboardSummary = () => {
     };
     fetchOrders();
   }, [dateRange]);
+
   return (
     <>
-      <SummaryCards today={orders?.today} monthly={orders?.monthly} />
-      <SalesOverviewCard
-        data={orders.filtered}
-        dateRange={dateRange}
-        onDateRangeChange={(range) => {
-          setDateRange({
-            from: range?.from?.toISOString().split("T")[0] || "",
-            to: range?.to?.toISOString().split("T")[0] || "",
-          });
-        }}
-      />
-      <MonthlyPerformanceCard data={orders.yearlySummary} />
+      {loading ? <LoadingCard /> : (
+        <>
+        <SummaryCards today={orders?.today} monthly={orders?.monthly} />
+        <SalesOverviewCard
+          data={orders.filtered}
+          dateRange={dateRange}
+          onDateRangeChange={(range) => {
+            setDateRange({
+              from: range?.from?.toISOString().split("T")[0] || "",
+              to: range?.to?.toISOString().split("T")[0] || "",
+            });
+          }}
+        />
+        <MonthlyPerformanceCard data={orders.yearlySummary} />
+        </>
+      )}
     </>
   );
 };
 
-export default DashboardSummary;
+export default DashboardSummaryCard;
