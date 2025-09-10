@@ -42,8 +42,8 @@ const SalesOverviewCard = ({ data, dateRange, onDateRangeChange }: SalesOverview
         </CardTitle>
         <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
           <PopoverTrigger asChild>
-            <button className="flex items-center mt-4 md:mt-0 w-full gap-2 text-sm border rounded-md px-3 py-1.5 hover:bg-gray-50 cursor-pointer">
-              <span>{range?.from ? format(range.from, "d / M / yyyy") : ""} - {range?.to ? format(range.to, "d / M / yyyy") : ""}</span>
+            <button className="flex items-center mt-4 md:mt-0 w-full md:w-auto gap-2 text-sm border rounded-md px-3 py-1.5 hover:bg-gray-50 cursor-pointer">
+              <span className="w-full">{range?.from ? format(range.from, "d / M / yyyy") : ""} - {range?.to ? format(range.to, "d / M / yyyy") : ""}</span>
               <ChevronDown className="size-4" />
             </button>
           </PopoverTrigger>

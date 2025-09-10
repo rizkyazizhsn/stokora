@@ -109,6 +109,7 @@ export default function DateRangePicker({
               value={range?.from ? format(range.from, "d / M / yyyy") : ""}
               readOnly
               className="border rounded px-2 py-1 w-28 text-center"
+              tabIndex={-1}
             />
             <span>-</span>
             <input
@@ -116,6 +117,7 @@ export default function DateRangePicker({
               value={range?.to ? format(range.to, "d / M / yyyy") : ""}
               readOnly
               className="border rounded px-2 py-1 w-28 text-center"
+              tabIndex={-1}
             />
           </div>
           <DayPicker
